@@ -1,0 +1,13 @@
+<mat-card class="card">
+  <div class="todo">
+    Title: {{ todo.Title }} <br />
+    Completed: {{ todo.Completed }} <br />
+    <button
+      mat-raised-button
+      *ngIf="this.isButtonVisible"
+      (click)="completeTask()"
+    >
+      Mark Completed
+    </button>
+  </div>
+</mat-card>

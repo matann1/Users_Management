@@ -1,0 +1,20 @@
+<div class="posts" [hidden]="postsListUser">
+  <h3>Posts</h3>
+
+  <button mat-raised-button (click)="addPostPage()">Add</button>
+  <app-post *ngFor="let post of userPost" [post]="post"></app-post>
+</div>
+
+<div class="frame" [hidden]="addPostUser">
+  <mat-card class="card">
+    <div class="addPost">
+      New Post <br />
+      Title:
+      <input type="text" #title (keyup)="post.Title = title.value" /> <br />
+      Body:
+      <input type="text" #title (keyup)="post.Body = title.value" />
+      <button mat-raised-button (click)="addPostToUser()">Add</button> <br />
+      <button mat-raised-button (click)="addPostPage()">Cancel</button>
+    </div>
+  </mat-card>
+</div>

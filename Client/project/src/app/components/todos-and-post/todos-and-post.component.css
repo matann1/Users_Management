@@ -1,0 +1,17 @@
+/* Split the screen in half*/
+.split {
+  height: auto;
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+  top: 64px;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #fefbe9;
+}

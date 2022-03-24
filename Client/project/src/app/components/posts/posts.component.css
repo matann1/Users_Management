@@ -1,0 +1,25 @@
+.posts {
+  width: 300px;
+  border-width: 2;
+  border-color: black;
+  border-style: solid;
+  margin-bottom: 1rem;
+  padding: 5px;
+}
+
+.frame {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 350px;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.addPost {
+  width: 300px;
+  border-width: 2;
+  border-color: black;
+  border-style: solid;
+  margin-bottom: 1rem;
+  padding: 5px;
+}

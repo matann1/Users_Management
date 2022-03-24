@@ -1,0 +1,82 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(buttonType)">
+  <div [class]="colorTask">
+    <div [ngClass]="{ white: backgroundUser, orange: !backgroundUser }">
+      <div
+        (click)="clickUser()"
+        [routerLink]="
+          backgroundUser ? ['userTodosAndPosts/', userData._id] : ['']
+        "
+      >
+        ID: {{ dataIndex + 1 }} <br />
+      </div>
+      <br />
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          required
+          type="text"
+          name="name"
+          [(ngModel)]="userData.Name"
+        />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="userData.Email"
+          matInput
+          placeholder="Ex. pat@example.com"
+          pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+          required
+        />
+      </mat-form-field>
+
+      <br />
+      <br />
+
+      <div *ngIf="otherData">
+        Street:
+        <input type="text" name="street" [(ngModel)]="userData.Street" />
+        <br />
+        City: <input type="text" name="city" [(ngModel)]="userData.City" />
+        <br />
+        Zip Code:
+        <input type="text" name="zipcode" [(ngModel)]="userData.Zipcode" />
+        <br />
+      </div>
+
+      <button
+        class="btn"
+        mat-raised-button
+        (mouseover)="showOtherData()"
+        (click)="hiddenOtherData()"
+      >
+        Other Data
+      </button>
+      <button
+        class="btn"
+        mat-raised-button
+        type="submit"
+        name="update"
+        (click)="onSubmit('update')"
+      >
+        Update
+      </button>
+      <button
+        class="btn"
+        mat-raised-button
+        type="submit"
+        name="delete"
+        (click)="onSubmit('delete')"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</form>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,32 @@
+<div class="split left">
+  <h3>Users List</h3>
+
+  <!-- search user by name or email -->
+  Search
+  <input type="text" #searchData (keyup)="search(searchData.value)" />
+
+  <!-- filter with pipe angular -->
+  <!-- <input type="text" [(ngModel)]="term" name="userfilter" /> -->
+  <a
+    ><button class="btn" mat-raised-button (click)="addUserPage()">
+      Add
+    </button></a
+  >
+  <br />
+
+  <!-- filterUsers initialozed to all user but after seach its change -->
+  <app-user
+    [dataFromUsers]="was"
+    [userid]="user._id"
+    *ngFor="let user of filterUsers; let i = index"
+    [dataIndex]="i"
+    (wasClick)="recieveDatafromClick($event)"
+  >
+    <!-- filter with pipe angular -->
+    <!-- *ngFor="let user of users | filter: term" -->
+  </app-user>
+  <app-add-user *ngIf="addUser" (addUser)="recieveData($event)"></app-add-user>
+  <br />
+</div>
+
+<router-outlet></router-outlet>

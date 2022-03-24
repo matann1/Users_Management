@@ -1,0 +1,48 @@
+<div class="frame">
+  <div class="split right">
+    Add New User
+    <mat-card class="card">
+      <div class="addUser">
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            #id
+            (keyup)="idData = id.value"
+          />
+        </mat-form-field>
+        <br /> -->
+
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input
+            matInput
+            required
+            type="text"
+            #name
+            (keyup)="nameData = name.value"
+          />
+        </mat-form-field>
+        <br />
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            name="email"
+            required
+            #email
+            (keyup)="emailData = email.value"
+            matInput
+            placeholder="Ex. pat@example.com"
+          />
+        </mat-form-field>
+        <br />
+        <button (click)="addToUsers()">Add</button>
+        <button (click)="addUserPage()">Cancel</button>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="todos" [hidden]="tasksListUser">
+  <h3>Todos</h3>
+  <button mat-raised-button (click)="addTaskPage()">Add</button>
+
+  <app-todo
+    (userTaskID)="reciveID($event)"
+    *ngFor="let todo of userTasks"
+    [todo]="todo"
+  ></app-todo>
+</div>
+
+<div class="frame" [hidden]="addTaskUser">
+  <mat-card class="card">
+    <div class="addTodo">
+      New Todo <br />
+      Title: <input type="text" #title (keyup)="titleData = title.value" />
+      <button mat-raised-button (click)="addTaskToUser()">Add</button>
+      <button mat-raised-button (click)="addTaskPage()">Cancel</button>
+    </div>
+  </mat-card>
+</div>
