@@ -39,11 +39,13 @@ export class PostsComponent implements OnInit {
     });
   }
 
+  //navigate to add post page or back from him
   addPostPage() {
     this.postsListUser = !this.postsListUser;
     this.addPostUser = !this.addPostUser;
   }
 
+  //add post to user
   addPostToUser() {
     this.post = this.post;
     this.user.Posts.push(this.post);
@@ -54,7 +56,7 @@ export class PostsComponent implements OnInit {
         this.addPostUser = false;
         this.postsListUser = true;
         this.ngOnInit();
-        //location.reload();
+        location.reload();
       });
   }
 

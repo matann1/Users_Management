@@ -14,12 +14,13 @@ export class UsersComponent implements OnInit {
   filterUsers: any[] = [];
   sub: Subscription = new Subscription();
 
-  was: any = '';
+  clickeduser: any = '';
 
   addUser: any = false;
 
   constructor(private srv: UtilsService) {}
 
+  //sreach users by name or email
   search(searchWord: string) {
     debugger;
     this.filterUsers = this.users.filter(
@@ -38,7 +39,7 @@ export class UsersComponent implements OnInit {
   }
 
   recieveDatafromClick(event: any) {
-    this.was = event;
+    this.clickeduser = event;
   }
 
   addUserPage() {

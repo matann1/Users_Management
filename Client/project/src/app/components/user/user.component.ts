@@ -58,11 +58,13 @@ export class UserComponent implements OnInit {
         .updateUser(this.userid, obj)
         .subscribe((status: any) => alert(status));
       this.ngOnInit();
+      location.reload();
     } else if (buttonType == 'delete') {
       this.srv
         .deleteUser(this.userid)
         .subscribe((status: any) => alert(status));
       this.ngOnInit();
+      location.reload();
     }
   }
 
@@ -74,8 +76,8 @@ export class UserComponent implements OnInit {
     this.otherData = false;
   }
 
+  //check if user was clicked
   clickUser() {
-    debugger;
     if (this.userid == this.dataFromUsers || this.dataFromUsers == '') {
       this.backgroundUser = !this.backgroundUser;
       if (!this.checkEnterToUser) {

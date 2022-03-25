@@ -16,7 +16,7 @@
 
   <!-- filterUsers initialozed to all user but after seach its change -->
   <app-user
-    [dataFromUsers]="was"
+    [dataFromUsers]="clickeduser"
     [userid]="user._id"
     *ngFor="let user of filterUsers; let i = index"
     [dataIndex]="i"

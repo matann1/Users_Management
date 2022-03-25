@@ -64,6 +64,7 @@ export class TodosComponent implements OnInit {
     this.tasksListUser = !this.tasksListUser;
   }
 
+  //add task to user
   addTaskToUser() {
     this.todo.Title = this.titleData;
     this.todo.Completed = false;

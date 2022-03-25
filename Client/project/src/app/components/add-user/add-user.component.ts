@@ -26,15 +26,15 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //navigate to add user page
   addUserPage() {
-    console.log(!this.adduserData);
     this.addUser.emit(!this.adduserData);
   }
 
+  //add user to users
   addToUsers() {
     debugger;
     if (this.nameData != '' && this.emailData != '') {
-      // this.user.ID=this.idData;
       this.user.Name = this.nameData;
       this.user.Email = this.emailData;
       this.sub = this.srv.addUser(this.user).subscribe((status: any) => {
