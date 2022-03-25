@@ -58,6 +58,7 @@ export class TodosComponent implements OnInit {
     });
   }
 
+  //check if click add task
   addTaskPage() {
     this.addTaskUser = !this.addTaskUser;
     this.tasksListUser = !this.tasksListUser;
