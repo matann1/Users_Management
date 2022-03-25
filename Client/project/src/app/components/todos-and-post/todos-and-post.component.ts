@@ -21,7 +21,6 @@ export class TodosAndPostComponent implements OnInit {
   sub: Subscription = new Subscription();
 
   ngOnInit(): void {
-    debugger;
     this.sub = this.ar.params.subscribe(
       (data: any) => (this.userId = data['id'])
     );

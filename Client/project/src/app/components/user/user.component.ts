@@ -54,17 +54,15 @@ export class UserComponent implements OnInit {
       obj.City = this.userData.City;
       obj.Zipcode = this.userData.Zipcode;
 
-      this.srv
-        .updateUser(this.userid, obj)
-        .subscribe((status: any) => alert(status));
-      this.ngOnInit();
-      location.reload();
+      this.srv.updateUser(this.userid, obj).subscribe((status: any) => {
+        alert(status);
+        location.reload();
+      });
     } else if (buttonType == 'delete') {
-      this.srv
-        .deleteUser(this.userid)
-        .subscribe((status: any) => alert(status));
-      this.ngOnInit();
-      location.reload();
+      this.srv.deleteUser(this.userid).subscribe((status: any) => {
+        alert(status);
+        location.reload();
+      });
     }
   }
 

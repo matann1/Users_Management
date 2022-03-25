@@ -25,6 +25,7 @@ export class TodoComponent implements OnInit {
 
   completeTask() {
     this.isButtonVisible = false;
+    console.log(this.todo.ID);
     this.userTaskID.emit(this.todo.ID);
   }
 }

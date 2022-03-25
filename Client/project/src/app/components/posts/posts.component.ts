@@ -23,11 +23,11 @@ export class PostsComponent implements OnInit {
 
   constructor(private srv: UtilsService, private ar: ActivatedRoute) {}
 
-  sub: Subscription = new Subscription();
+  sub1: Subscription = new Subscription();
   sub2: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.srv.getUser(this.userId).subscribe((data: any) => {
+    this.sub1 = this.srv.getUser(this.userId).subscribe((data: any) => {
       this.user = data;
 
       data.Posts.forEach((dataPost: any) => {
@@ -55,13 +55,12 @@ export class PostsComponent implements OnInit {
         alert(status);
         this.addPostUser = false;
         this.postsListUser = true;
-        this.ngOnInit();
         location.reload();
       });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.sub1.unsubscribe();
     this.sub2.unsubscribe();
   }
 }

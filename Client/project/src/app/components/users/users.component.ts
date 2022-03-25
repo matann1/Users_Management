@@ -22,7 +22,6 @@ export class UsersComponent implements OnInit {
 
   //sreach users by name or email
   search(searchWord: string) {
-    debugger;
     this.filterUsers = this.users.filter(
       x => x.Name.includes(searchWord) || x.Email.includes(searchWord)
     );

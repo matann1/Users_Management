@@ -40,9 +40,7 @@ export class AddUserComponent implements OnInit {
       this.sub = this.srv.addUser(this.user).subscribe((status: any) => {
         this.addUser.emit(!this.addUser);
         alert(status);
-        this.ngOnInit();
-
-        window.location.reload();
+        location.reload();
       });
     } else {
       alert('Error input try again!');

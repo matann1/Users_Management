@@ -22,6 +22,7 @@ export class TodosComponent implements OnInit {
   todo: any = {};
   user: any = {};
   titleData: string = '';
+  lastIDofTasks: number = 0;
 
   constructor(private srv: UtilsService, private ar: ActivatedRoute) {}
 
@@ -36,6 +37,7 @@ export class TodosComponent implements OnInit {
         (this.todo.ID = dataTasks.ID),
           (this.todo.Title = dataTasks.Title),
           (this.todo.Completed = dataTasks.Completed);
+        this.lastIDofTasks = dataTasks.ID;
 
         this.userTasks.push(this.todo);
         this.todo = {};
@@ -66,6 +68,7 @@ export class TodosComponent implements OnInit {
 
   //add task to user
   addTaskToUser() {
+    this.todo.ID = this.lastIDofTasks + 1;
     this.todo.Title = this.titleData;
     this.todo.Completed = false;
     this.user.Tasks.push(this.todo);
@@ -75,8 +78,7 @@ export class TodosComponent implements OnInit {
         alert(status);
         this.addTaskUser = false;
         this.tasksListUser = true;
-        this.ngOnInit();
-        //location.reload();
+        location.reload();
       });
   }
 
