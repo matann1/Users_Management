@@ -8,10 +8,10 @@
   overflow-x: hidden;
   padding-top: 20px;
   padding-left: 20px;
+  padding-right: 100px;
 }
 
 /* Control the right side */
 .right {
   right: 0;
-  background-color: #fefbe9;
 }
