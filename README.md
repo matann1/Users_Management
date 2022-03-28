@@ -1,3 +1,3 @@
-# Users_mange
+# Users_management
 
 MEAN STACK PROJECT
