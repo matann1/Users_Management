@@ -2,8 +2,21 @@
   <h3>Users List</h3>
 
   <!-- search user by name or email -->
-  Search
-  <input type="text" #searchData (keyup)="search(searchData.value)" />
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      #searchData
+      (keyup)="search(searchData.value)"
+      maxlength="30"
+      placeholder="search by name or email"
+    />
+    <mat-hint align="start"
+      ><strong>Don't disclose personal info</strong>
+    </mat-hint>
+    <mat-hint align="end">{{ searchData.value.length }} / 30</mat-hint>
+  </mat-form-field>
 
   <!-- filter with pipe angular -->
   <!-- <input type="text" [(ngModel)]="term" name="userfilter" /> -->
@@ -16,9 +29,9 @@
 
   <!-- filterUsers initialozed to all user but after seach its change -->
   <app-user
+    *ngFor="let user of filterUsers; let i = index"
     [dataFromUsers]="clickeduser"
     [userid]="user._id"
-    *ngFor="let user of filterUsers; let i = index"
     [dataIndex]="i"
     (wasClick)="recieveDatafromClick($event)"
   >

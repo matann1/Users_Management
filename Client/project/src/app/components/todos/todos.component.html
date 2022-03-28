@@ -2,11 +2,19 @@
   <h3>Todos</h3>
   <button mat-raised-button (click)="addTaskPage()">Add</button>
 
-  <app-todo
-    (userTaskID)="reciveID($event)"
-    *ngFor="let todo of userTasks"
-    [todo]="todo"
-  ></app-todo>
+  <mat-card class="card">
+    <div class="todo" *ngFor="let todo of user.Tasks">
+      Title: {{ todo.Title }} <br />
+      Completed: {{ todo.Completed }} <br />
+      <button
+        mat-raised-button
+        *ngIf="!todo.Completed"
+        (click)="completeTask(todo.ID)"
+      >
+        Mark Completed
+      </button>
+    </div>
+  </mat-card>
 </div>
 
 <div class="frame" [hidden]="addTaskUser">

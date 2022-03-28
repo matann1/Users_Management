@@ -15,6 +15,7 @@ export class TodosAndPostComponent implements OnInit {
 
   addTaskUser: boolean = true;
   taskListUser: boolean = false;
+  refreshData: any = false;
 
   constructor(private srv: UtilsService, private ar: ActivatedRoute) {}
 
@@ -24,6 +25,14 @@ export class TodosAndPostComponent implements OnInit {
     this.sub = this.ar.params.subscribe(
       (data: any) => (this.userId = data['id'])
     );
+  }
+
+  checkEvent(event: any) {
+    // debugger;
+    this.refreshData = event;
+    if (this.refreshData) {
+      this.ngOnInit();
+    }
   }
 
   ngOnDestroy() {

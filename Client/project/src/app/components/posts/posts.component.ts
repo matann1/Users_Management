@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 import { UtilsService } from 'src/app/utils.service';
+import { SharedService } from 'src/app/shared.service';
 
 @Component({
   selector: 'app-posts',
@@ -21,13 +22,12 @@ export class PostsComponent implements OnInit {
   post: any = {};
   user: any = {};
 
-  constructor(private srv: UtilsService, private ar: ActivatedRoute) {}
+  constructor(private srv: UtilsService, private shared: SharedService) {}
 
-  sub1: Subscription = new Subscription();
-  sub2: Subscription = new Subscription();
+  sub: Subscription = new Subscription();
 
   ngOnInit(): void {
-    this.sub1 = this.srv.getUser(this.userId).subscribe((data: any) => {
+    this.sub = this.srv.getUser(this.userId).subscribe((data: any) => {
       this.user = data;
 
       data.Posts.forEach((dataPost: any) => {
@@ -49,18 +49,18 @@ export class PostsComponent implements OnInit {
   addPostToUser() {
     this.post = this.post;
     this.user.Posts.push(this.post);
-    this.sub2 = this.srv
+    this.sub = this.srv
       .updateUser(this.user._id, this.user)
       .subscribe((status: any) => {
         alert(status);
-        this.addPostUser = false;
-        this.postsListUser = true;
-        location.reload();
+        this.postsListUser = !this.postsListUser;
+        this.addPostUser = !this.addPostUser;
+
+        this.shared.sendClickEvent();
       });
   }
 
   ngOnDestroy() {
-    this.sub1.unsubscribe();
-    this.sub2.unsubscribe();
+    this.sub.unsubscribe();
   }
 }

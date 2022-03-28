@@ -24,7 +24,7 @@ const getUser = id => {
   });
 };
 
-const getProductByNameOrEmail = word => {
+const getUserByNameOrEmail = word => {
   return new Promise((resolve, reject) => {
     //start with "name"
     User.find(
@@ -103,7 +103,7 @@ const deleteUser = id => {
 module.exports = {
   getAllUsers,
   getUser,
-  getProductByNameOrEmail,
+  getUserByNameOrEmail,
   addUser,
   updateUser,
   deleteUser

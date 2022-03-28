@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { UtilsService } from 'src/app/utils.service';
+import { SharedService } from 'src/app/shared.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -10,6 +12,7 @@ import { UtilsService } from 'src/app/utils.service';
 })
 export class UserComponent implements OnInit {
   sub: Subscription = new Subscription();
+  clickEventSubscription: Subscription;
 
   userData: any = {};
   otherData: boolean = false;
@@ -18,6 +21,7 @@ export class UserComponent implements OnInit {
   colorTask: string = 'green';
   lastUserid: string = '';
   checkEnterToUser: boolean = false;
+  allTasksTrue: boolean = true;
 
   @Output()
   wasClick: EventEmitter<string> = new EventEmitter();
@@ -31,15 +35,30 @@ export class UserComponent implements OnInit {
   @Input()
   dataIndex: number = 0;
 
-  constructor(private srv: UtilsService) {}
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
+
+  constructor(private srv: UtilsService, private shared: SharedService) {
+    this.clickEventSubscription = this.shared.getClickEvent().subscribe(() => {
+      this.allTasksTrue = true;
+      this.ngOnInit();
+    });
+  }
 
   ngOnInit(): void {
     this.sub = this.srv.getUser(this.userid).subscribe((data: any) => {
       this.userData = data;
+
       //check if one of task uncompleted if true the color is red
       data.Tasks.forEach((task: any) => {
         if (task.Completed == false) {
           this.colorTask = 'red';
+          this.allTasksTrue = false;
+        } else if (this.allTasksTrue == true) {
+          this.colorTask = 'green';
+          this.allTasksTrue = true;
         }
       });
     });
@@ -56,7 +75,7 @@ export class UserComponent implements OnInit {
 
       this.srv.updateUser(this.userid, obj).subscribe((status: any) => {
         alert(status);
-        location.reload();
+        this.ngOnInit();
       });
     } else if (buttonType == 'delete') {
       this.srv.deleteUser(this.userid).subscribe((status: any) => {
@@ -88,6 +107,8 @@ export class UserComponent implements OnInit {
     } else {
       alert('Already other user open');
     }
+    console.log(this.dataFromUsers);
+    console.log(this.userid);
   }
 
   ngOnDestroy() {

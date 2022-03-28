@@ -6,7 +6,7 @@ const router = express.Router();
 router.route('/').get(async function(req, resp) {
   if (req.query != null && req.query.name != null) {
     let name = req.query.name;
-    let data = await userBL.getProductByNameOrEmail(name);
+    let data = await userBL.getUserByNameOrEmail(name);
     return resp.json(data);
   } else {
     let data = await userBL.getAllUsers();

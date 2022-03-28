@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { Subscription } from 'rxjs';
 import { UtilsService } from 'src/app/utils.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -12,6 +13,11 @@ export class AddUserComponent implements OnInit {
   idData: string = '';
   nameData: string = '';
   emailData: string = '';
+
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
 
   adduserData: boolean = true;
 
@@ -33,7 +39,6 @@ export class AddUserComponent implements OnInit {
 
   //add user to users
   addToUsers() {
-    debugger;
     if (this.nameData != '' && this.emailData != '') {
       this.user.Name = this.nameData;
       this.user.Email = this.emailData;

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +13,6 @@ import { UserComponent } from './components/user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodosComponent } from './components/todos/todos.component';
 import { PostsComponent } from './components/posts/posts.component';
-import { PostComponent } from './components/post/post.component';
-import { TodoComponent } from './components/todo/todo.component';
 import { TodosAndPostComponent } from './components/todos-and-post/todos-and-post.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularSplitModule } from 'angular-split';
@@ -50,8 +48,6 @@ const appRoutes: Routes = [
     UserComponent,
     TodosComponent,
     PostsComponent,
-    PostComponent,
-    TodoComponent,
     TodosAndPostComponent,
     AddUserComponent
   ],
@@ -68,7 +64,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

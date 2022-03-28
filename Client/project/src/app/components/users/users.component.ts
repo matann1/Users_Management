@@ -20,17 +20,18 @@ export class UsersComponent implements OnInit {
 
   constructor(private srv: UtilsService) {}
 
-  //sreach users by name or email
-  search(searchWord: string) {
-    this.filterUsers = this.users.filter(
-      x => x.Name.includes(searchWord) || x.Email.includes(searchWord)
-    );
-  }
-
   ngOnInit(): void {
     this.sub = this.srv.getUsers().subscribe((userData: any) => {
       (this.users = userData), (this.filterUsers = userData);
     });
+  }
+
+  //search users by name or email
+  search(searchWord: string) {
+    //debugger;
+    this.filterUsers = this.users.filter(
+      x => x.Name.includes(searchWord) || x.Email.includes(searchWord)
+    );
   }
 
   recieveData(event: any) {

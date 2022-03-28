@@ -3,18 +3,6 @@
     Add New User
     <mat-card class="card">
       <div class="addUser">
-        <!-- <mat-form-field appearance="outline">
-          <mat-label>ID</mat-label>
-          <input
-            matInput
-            required
-            type="text"
-            #id
-            (keyup)="idData = id.value"
-          />
-        </mat-form-field>
-        <br /> -->
-
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
           <input
@@ -27,21 +15,31 @@
         </mat-form-field>
         <br />
 
-        <mat-form-field appearance="outline">
+        <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Email</mat-label>
           <input
             type="email"
-            name="email"
-            required
+            matInput
+            [formControl]="emailFormControl"
+            placeholder="Ex. pat@example.com"
             #email
             (keyup)="emailData = email.value"
-            matInput
-            placeholder="Ex. pat@example.com"
           />
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
         <br />
-        <button (click)="addToUsers()">Add</button>
-        <button (click)="addUserPage()">Cancel</button>
+        <button mat-raised-button (click)="addToUsers()">Add</button>
+        <button mat-raised-button (click)="addUserPage()">Cancel</button>
       </div>
     </mat-card>
   </div>
